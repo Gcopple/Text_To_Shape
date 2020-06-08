@@ -55,8 +55,7 @@ for File_Name in files:
 
     #Move files to the right spot
     shutil.move(New_File_Name, path)
-del files
-del lines
+
 print("All files have been converted. Proceeding to create text files.")
 
 os.startfile("Text_to_Shape_NAD83_2011.gms")
