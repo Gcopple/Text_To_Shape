@@ -1,6 +1,6 @@
 #This is version one of an automated script to edit all .txt files in a folder
 #Then output a folder with files that have commas after each column (No heading on the first three columns)
-#Last Edit By Grant Copple, June 2nd 2020
+#Last Edit By Grant Copple, June 24th 2020
 
 import glob
 import os
@@ -34,6 +34,9 @@ files = glob.glob(os.path.join(path_in, "*.txt"))
 for File_Name in files:
     with open(File_Name, 'r') as f:
         lines = f.readlines()[23:]
+        if "Latitude        Longitude        H-Ell         Latitude        Longitude        H-Ell      CorrTime        Heading          Pitch           Roll     VEast    VNorth       VUp" in lines:
+            new_read_point = lines.index("Latitude        Longitude        H-Ell         Latitude        Longitude        H-Ell      CorrTime        Heading          Pitch           Roll     VEast    VNorth       VUp") + 2
+            lines = lines[new_read_point:]
 
     # Check for errors at the end of the files and delete them
     check = 'Errors/warnings:' in lines[-3]
